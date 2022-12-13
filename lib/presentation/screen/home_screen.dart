@@ -158,19 +158,67 @@ class _HomeScreenState extends State<HomeScreen> {
             enabled: true,
             autocorrect: false,
             decoration: InputDecoration(
-                hintText: 'Search your destination',
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(FontAwesomeIcons.magnifyingGlass,
-                      color: Colors.black, size: 14),
-                ),
-                filled: true,
-                fillColor: Colors.black,
-                border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(kItemPadding)))),
-          )
+              hintText: 'Search your destination',
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(FontAwesomeIcons.magnifyingGlass,
+                    color: Colors.black, size: 14),
+              ),
+              filled: true,
+              fillColor: Colors.black,
+              border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(kItemPadding))),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: kItemPadding),
+            ),
+            style: TextStyles.defaultStyle,
+            onChanged: (value) {},
+            onSubmitted: (String submitValue) {},
+          ),
+          SizedBox(
+            height: kDefaultPadding,
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: _buildItemCategory(
+                    ImageHelper.loadFromAsset(
+                      AssetHelper.icoHotel,
+                      width: kDefaultIconSize,
+                      height: kDefaultIconSize,
+                    ),
+                    Color(0xffFE9C5E), () {
+                  // Navigator.of(context).pushNamed(HotelBookingScreen.routeName);
+                }, 'Hotels'),
+              ),
+              SizedBox(width: kDefaultPadding),
+              Expanded(
+                child: _buildItemCategory(
+                    ImageHelper.loadFromAsset(
+                      AssetHelper.icoPlane,
+                      width: kDefaultIconSize,
+                      height: kDefaultIconSize,
+                    ),
+                    Color(0xffF77777),
+                    () {},
+                    'Flights'),
+              ),
+              SizedBox(width: kDefaultPadding),
+              Expanded(
+                child: _buildItemCategory(
+                    ImageHelper.loadFromAsset(
+                      AssetHelper.icoHotelPlane,
+                      width: kDefaultIconSize,
+                      height: kDefaultIconSize,
+                    ),
+                    Color(0xff3EC8BC),
+                    () {},
+                    'All'),
+              ),
+            ],
+          ),
         ],
       ),
     );
